@@ -1,1 +1,1 @@
-Entria challenge for Fullstack Developer Job
+Entria challenge for Full Stack Job

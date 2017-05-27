@@ -9,13 +9,14 @@ const routes = {
 }
 
 const config = {
-  initialRouteName: 'Home'
+  initialRouteName: 'Home',
+  cardStyle: { backgroundColor: '#424242' }
 }
 
 const NavStack = StackNavigator(routes, config)
 
 export default class App extends Component {
   render() {
-    return <NavStack />
+    return <NavStack style={{ backgroundColor: '#212121' }} />
   }
 }

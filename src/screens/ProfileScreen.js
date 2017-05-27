@@ -1,30 +1,26 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, FlatList } from 'react-native'
+import Card from '../components/Card'
+import { ScreenView } from './_ScreenView'
 
 export default class ProfileScreen extends Component {
   static navigationOptions = {
-    title: 'Profile'
+    title: 'Profile',
+    headerTitleStyle: { color: 'white' },
+    headerTintColor: 'white'
   }
 
   renderItem({ item, index }) {
-    return <Text>{ item.key }</Text>
+    return <Card text={ item.key } />
   }
 
   render() {
-    const data = [{ key: 'This' }]
+    const data = [{ key: 'First Card' }, { key: 'Second Card' }]
     return(
-      <View style={ styles.container }>
+      <ScreenView>
         <Text>{ this.props.navigation.state.params.name }</Text>
         <FlatList data={ data } renderItem={ this.renderItem }></FlatList>
-      </View>
+      </ScreenView>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})

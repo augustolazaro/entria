@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Text } from 'react-native'
+import { Text, TouchableNativeFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
 export default class Card extends PureComponent {
@@ -8,24 +8,22 @@ export default class Card extends PureComponent {
   }
 
   render() {
-    console.log(this.props)
     return(
-      <CardWrapper>
-        <CardHeader>
-          <CardTitle onPress={ this._onPress }>{ this.props.text }</CardTitle>
-          <CardLabel>Private</CardLabel>
-        </CardHeader>
-        <CardText>Repo description.</CardText>
-      </CardWrapper>
+      <TouchableNativeFeedback onPress={ this._onPress.bind(this) }>
+        <CardWrapper>
+          <CardHeader>
+            <CardTitle>{ this.props.text }</CardTitle>
+            <CardLabel>Private</CardLabel>
+          </CardHeader>
+          <CardText>Repo description.</CardText>
+        </CardWrapper>
+      </TouchableNativeFeedback>
     )
   }
 }
 
 const CardWrapper = styled.View`
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom-width: 1px;
-  border-color: #E1E4E8;
+  padding: 20px 0;
 `
 
 const CardText = styled.Text`

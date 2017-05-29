@@ -22,7 +22,7 @@ const config = {
       backgroundColor: '#E36209',
     },
     style: {
-      backgroundColor: '#f5f5f5'
+      backgroundColor: '#F5F5F5'
     }
   }
 }

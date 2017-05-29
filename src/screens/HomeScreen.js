@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, FlatList, Button, StyleSheet } from 'react-native'
-import { ScreenView } from './_ScreenView'
+import { ScreenCenteredView } from './_ScreenView'
+import styled from 'styled-components/native'
 
 export default class HomeScreen extends Component {
   static navigationOptions = {
@@ -12,11 +13,9 @@ export default class HomeScreen extends Component {
     const { navigate } = this.props.navigation
     console.log(this.props)
     return(
-      <ScreenView>
+      <ScreenCenteredView>
         <Button title='Profile' onPress={ () => navigate('Profile', { name: 'Augusto Lazaro' }) } />
-        <Button title='Repositories' onPress={ () => navigate('Repositories') } />
-        <Button title='Repo' onPress={ () => navigate('Repo', { repoName: 'Repo Name 1' }) } />
-      </ScreenView>
+      </ScreenCenteredView>
     )
   }
 }

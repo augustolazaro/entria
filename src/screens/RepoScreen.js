@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, FlatList } from 'react-native'
+import { Text } from 'react-native'
 import Card from '../components/Card'
 import { ScreenView } from './_ScreenView'
+import { TabNavigator } from 'react-navigation'
 
-export default class ProfileScreen extends Component {
+export default class ReposScreen extends Component {
   static navigationOptions = {
-    title: 'Profile',
+    title: 'Repo',
     headerTitleStyle: { color: 'white' },
     headerTintColor: 'white'
   }
@@ -13,7 +14,7 @@ export default class ProfileScreen extends Component {
   render() {
     return(
       <ScreenView>
-        <Text>{ this.props.navigation.state.params.name }</Text>
+        <Text>Repo Name</Text>
       </ScreenView>
     )
   }

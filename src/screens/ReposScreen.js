@@ -4,7 +4,7 @@ import Card from '../components/Card'
 import { ScreenView } from './_ScreenView'
 import styled from 'styled-components/native'
 
-export default class ReposScreen extends PureComponent {
+class ReposScreen extends PureComponent {
   static navigationOptions = {
     title: 'Repositories',
     headerTitleStyle: { color: 'white' },
@@ -29,6 +29,7 @@ export default class ReposScreen extends PureComponent {
     )
   }
 }
+export default ReposScreen
 
 const ListItemSeparator = styled.View`
   border-bottom-width: 1px;

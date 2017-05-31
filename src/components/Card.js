@@ -2,7 +2,9 @@ import React, { PureComponent } from 'react'
 import { Text, TouchableNativeFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
-export default class Card extends PureComponent {
+import Relay from 'react-relay'
+
+class Card extends PureComponent {
   _onPress() {
     this.props.onPressItem()
   }
@@ -13,7 +15,7 @@ export default class Card extends PureComponent {
         <CardWrapper>
           <CardHeader>
             <CardTitle>{ this.props.text }</CardTitle>
-            <CardLabel>Private</CardLabel>
+            <CardLabel>{ this.props.root.hello }</CardLabel>
           </CardHeader>
           <CardText>Repo description.</CardText>
         </CardWrapper>
@@ -21,6 +23,16 @@ export default class Card extends PureComponent {
     )
   }
 }
+
+export default Relay.createContainer(Card, {
+  fragments: {
+    root: () => Relay.QL`
+      fragment on RootQueryType {
+        hello
+      }
+    `
+  }
+})
 
 const CardWrapper = styled.View`
   padding: 20px 0;

@@ -1,7 +1,7 @@
 import { Environment, Network, RecordSource, Store } from 'relay-runtime'
 
 function fetchQuery(operation, variables, cacheConfig, uploadables) {
-  return fetch('http://localhost:4000/graphql', {
+  return fetch('http://192.168.1.115:4000/graphql', {
     method: 'POST',
     headers: {
       Accept: 'application/json',

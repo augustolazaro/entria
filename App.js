@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import AppNavigator from './src/navigators/AppNavigator'
-import Relay, { DefaultNetworkLayer } from 'react-relay'
+import Relay, { DefaultNetworkLayer } from 'react-relay/classic'
+import environment from './src/RelayEnvironment'
 
 Relay.injectNetworkLayer(new DefaultNetworkLayer('http://localhost:4000/graphql'))
 

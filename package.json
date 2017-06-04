@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-native-scripts": "0.0.30",
+    "babel-plugin-react-relay": "^0.10.0",
     "jest-expo": "~1.0.1",
+    "react-native-scripts": "0.0.30",
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
@@ -13,7 +14,8 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js --watch"
+    "test": "node node_modules/jest/bin/jest.js --watch",
+    "relay": "relay-compiler --src ./src --schema data/schema.graphql"
   },
   "jest": {
     "preset": "jest-expo"
@@ -25,6 +27,12 @@
     "react-native": "^0.44.0",
     "react-navigation": "^1.0.0-beta.11",
     "react-relay": "^1.0.0",
+    "relay-compiler": "^1.0.0",
     "styled-components": "^2.0.0"
+  },
+  "graphql": {
+    "request": {
+      "url": "https://192.168.1.115:4000/graphql"
+    }
   }
 }

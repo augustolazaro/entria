@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react'
 import { Text, TouchableNativeFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
-import Relay from 'react-relay'
+import Relay, { QueryRenderer, graphql } from 'react-relay'
+import environment from '../RelayEnvironment'
 
 class Card extends PureComponent {
   _onPress() {
@@ -10,29 +11,33 @@ class Card extends PureComponent {
   }
 
   render() {
-    return(
-      <TouchableNativeFeedback onPress={ this._onPress.bind(this) }>
-        <CardWrapper>
-          <CardHeader>
-            <CardTitle>{ this.props.text }</CardTitle>
-            <CardLabel>{ this.props.root.hello }</CardLabel>
-          </CardHeader>
-          <CardText>Repo description.</CardText>
-        </CardWrapper>
-      </TouchableNativeFeedback>
-    )
+    <QueryRenderer
+      environment={ environment }
+      query={ graphql`
+        query CardQuery {
+          viewer {
+            id
+          }
+        }
+      `}
+      render={ ({error, props }) => {
+        return(
+          <TouchableNativeFeedback onPress={ this._onPress.bind(this) }>
+            <CardWrapper>
+              <CardHeader>
+                <CardTitle>{ this.props.text }</CardTitle>
+                <CardLabel>{ this.props.viewer.id }</CardLabel>
+              </CardHeader>
+              <CardText>Repo description.</CardText>
+            </CardWrapper>
+          </TouchableNativeFeedback>
+        )
+      } }
+    />
   }
 }
 
-export default Relay.createContainer(Card, {
-  fragments: {
-    root: () => Relay.QL`
-      fragment on RootQueryType {
-        hello
-      }
-    `
-  }
-})
+export default Card
 
 const CardWrapper = styled.View`
   padding: 20px 0;

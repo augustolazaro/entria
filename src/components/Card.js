@@ -11,29 +11,31 @@ class Card extends PureComponent {
   }
 
   render() {
-    <QueryRenderer
-      environment={ environment }
-      query={ graphql`
-        query CardQuery {
-          viewer {
-            id
+    return(
+      <QueryRenderer
+        environment={ environment }
+        query={ graphql`
+          query CardQuery {
+            viewer {
+              id
+            }
           }
-        }
-      `}
-      render={ ({error, props }) => {
-        return(
-          <TouchableNativeFeedback onPress={ this._onPress.bind(this) }>
-            <CardWrapper>
-              <CardHeader>
-                <CardTitle>{ this.props.text }</CardTitle>
-                <CardLabel>{ this.props.viewer.id }</CardLabel>
-              </CardHeader>
-              <CardText>Repo description.</CardText>
-            </CardWrapper>
-          </TouchableNativeFeedback>
-        )
-      } }
-    />
+        `}
+        render={ ({error, props }) => {
+          return(
+            <TouchableNativeFeedback onPress={ this._onPress.bind(this) }>
+              <CardWrapper>
+                <CardHeader>
+                  <CardTitle>{ this.props.text }</CardTitle>
+                  <CardLabel>{ props }</CardLabel>
+                </CardHeader>
+                <CardText>Repo description.</CardText>
+              </CardWrapper>
+            </TouchableNativeFeedback>
+          )
+        } }
+      />
+    )
   }
 }
 

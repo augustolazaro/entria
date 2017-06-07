@@ -7,8 +7,7 @@
     "development": {
       "plugins": [
         "transform-react-jsx-source",
-        "./plugins/babelRelayPlugin",
-        "react-relay"
+        ["relay", {"schema": "data/schema.json"}]
       ]
     }
   }
